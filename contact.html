@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Contact Form</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+    <div class="title">
+        <p>D<span class="import" id="import"></span>t</p>
+    </div>
+    
+        <div class="intro">
+            <div class="navigation">
+       
+                <div class="nav">
+                    <p class="projects" onclick="window.location.href='projects.html'">Projects</p>
+                </div>
+                        
+                <div class=" nav">
+                    <p class="about" onclick="window.location.href='about.html'">About</p>
+                </div>
+        
+        
+        
+                <div class="nav">
+                    <p class="contact" onclick="window.location.href='contact.html'">Contact</p>
+                </div>
+        
+            </div>
+        
+            <div class="click">
+            <div class="bigtext">
+                <p onclick="window.location.href='index.html'">E</p>
+            </div>
+    
+    
+
+    
+        </div>
+        <div class="contact-section">
+            <div class="wii">
+
+                
+                <div class="contact-form col lili">
+                    <form id="contact-form">
+                        <div class="wrapper">
+                            <div class="row">
+                                <input type="text" id="name" name="name" placeholder="Name" required />
+                                <input type="text" id="service" name="service" placeholder="Inquiry" required />
+                            </div>
+                            <div class="row">
+                                <input type="email" id="email" name="email" placeholder="Email" />
+                                <input type="text" id="company" name="company" placeholder="Company" />
+                            </div>
+                            <div class="row">
+                                <textarea id="message" name="message" placeholder="Message" rows="5"></textarea>
+                            </div>
+                            <div class="row submit">
+                                <a href="thanks.html" role="button" onclick="submitForm()">Submit</a>
+  
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    
+
+        </div>
+
+
+
+        <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@latest/bundled/lenis.js"></script>
+        <script>
+                  const lenis = new Lenis({
+                  duration: 1,
+                  easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
+                  direction: "vertical",
+                  gestureDirection: "vertical",
+                  smooth: true,
+                  smoothTouch: false,
+                  touchMultiplier: 2,
+                });
+                
+                function raf(time) {
+                  lenis.raf(time);
+                  requestAnimationFrame(raf);
+                }
+                
+                requestAnimationFrame(raf);
+        </script>
+
+
+<script>
+    const textArray = [ "ialogis","igitalis"];
+  
+    const importElement = document.getElementById('import');
+  
+    let index = 0;
+  
+    function typeWriter() {
+      const currentText = textArray[index];
+  
+      let currentIndex = 0;
+      let randomText = '';
+  
+      const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?µ¶·¸¹º»¼½¾¿×÷þÿĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħĨĩĪīĬĭĮįİıĲĳĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŉŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽžſƀƁƂƃƄƅƆƇƈƉƊƋƌƍƎƏƐƑƒƓƔƕƖƗƘƙƚƛƜƝƞƟƠơƢƣƤƥƦƧƨƩƪƫƬƭƮƯưƱƲƳƴƵƶƷƸƹƺƻƼƽƾƿǀǁǂǃǄǅǆǇǈǉǊǋǌǍǎǏǐǑǒǓǔǕǖǗǘǙǚǛǜǝǞǟǠǡǢǣǤǥǦǧǨǩǪǫǬǭǮǯǰǱǲǳǴǵǶǷǸǹǺǻǼǽǾǿȀȁȂȃȄȅȆȇ";
+      
+
+      const shuffledCharacters = characters.split('').sort(() => Math.random() - 0.5).join('');
+      
+      for (let i = 0; i < currentText.length; i++) {
+        randomText += shuffledCharacters.charAt(Math.floor(Math.random() * shuffledCharacters.length));
+      }
+  
+
+      importElement.textContent = randomText;
+  
+
+      const interval = setInterval(() => {
+        if (currentIndex < currentText.length) {
+
+          randomText = randomText.substr(0, currentIndex) + currentText[currentIndex] + randomText.substr(currentIndex + 1);
+          importElement.textContent = randomText;
+          currentIndex++;
+        } else {
+
+          clearInterval(interval);
+          setTimeout(() => {
+            index = (index + 1) % textArray.length; 
+            typeWriter(); 
+          }, 3000); 
+        }
+      }, 100); 
+    }
+  
+
+    typeWriter();
+  </script>
+
+</body>
+</html>
